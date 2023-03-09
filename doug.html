@@ -80,6 +80,7 @@
         let companies = [], data = [];
         let thead, tbody, table;
         let container;
+
         window.onload = function () {
             marketingShare.data.forEach(corp => {
                 companies.push(corp.Company);
@@ -144,21 +145,24 @@
             });
         }
 
-
+        let j = JSON.stringify(marketingShare);
+        console.log(j);
+        console.log(typeof j);
         function createTable(data) {
             table = document.createElement('table');
             table.setAttribute("class", "table table-bordered table-striped");
             CreateThead(data['titles']);
             CreateTbody(data['data']);
 
+
         }
 
         function CreateThead(titleArray) {
 
             let theadTR = document.createElement("tr");
-            titleArray.forEach((title, index) => {
+            titleArray.forEach((data) => {
                 let th = document.createElement("th");
-                th.innerText = title;
+                th.innerText = data;
                 theadTR.append(th);
             });
             thead.append(theadTR);
